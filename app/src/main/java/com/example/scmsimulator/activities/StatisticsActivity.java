@@ -13,6 +13,10 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         TextView textRoster = findViewById(R.id.text_roster_size);
         TextView textMissions = findViewById(R.id.text_total_missions);
         TextView textWins = findViewById(R.id.text_total_wins);
@@ -27,5 +31,14 @@ public class StatisticsActivity extends AppCompatActivity {
         textMissions.setText("Total Missions: " + stats.getTotalMissions());
         textWins.setText("Total Wins: " + stats.getTotalWins());
         textTraining.setText("Training Sessions: " + stats.getTotalTrainingSessions());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

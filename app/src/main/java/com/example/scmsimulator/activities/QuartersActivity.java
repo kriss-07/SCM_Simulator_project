@@ -26,6 +26,10 @@ public class QuartersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quarters);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         listViewCrew = findViewById(R.id.list_quarters_crew);
         spinnerQuartersCrew = findViewById(R.id.spinner_quarters_crew);
         btnRestAll = findViewById(R.id.btn_rest_all);
@@ -104,5 +108,14 @@ public class QuartersActivity extends AppCompatActivity {
         btnTransferSim.setEnabled(hasCrew);
         btnTransferMission.setEnabled(hasCrew);
         btnTransferMedBase.setEnabled(hasCrew);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

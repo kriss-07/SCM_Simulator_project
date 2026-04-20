@@ -27,6 +27,10 @@ public class SimulatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulator);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         listViewCrew = findViewById(R.id.list_simulator_crew);
         spinnerSimulatorCrew = findViewById(R.id.spinner_simulator_crew);
         btnTrainAll = findViewById(R.id.btn_train_all);
@@ -87,5 +91,14 @@ public class SimulatorActivity extends AppCompatActivity {
         }
         
         btnTransferQuarters.setEnabled(!simulatorCrew.isEmpty());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

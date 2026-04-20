@@ -22,6 +22,10 @@ public class RecruitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recruit);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         editName = findViewById(R.id.edit_recruit_name);
         spinnerRole = findViewById(R.id.spinner_role);
         btnRecruit = findViewById(R.id.btn_confirm_recruit);
@@ -57,5 +61,14 @@ public class RecruitActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

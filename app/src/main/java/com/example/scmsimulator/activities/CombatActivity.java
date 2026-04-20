@@ -59,6 +59,10 @@ public class CombatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         textThreat = findViewById(R.id.text_combat_threat);
         imgThreat = findViewById(R.id.img_combat_threat);
         progThreatHP = findViewById(R.id.progress_threat_hp);
@@ -489,5 +493,14 @@ public class CombatActivity extends AppCompatActivity {
                 cm.setCurrentLocation(Location.MED_BASE);
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -24,6 +24,10 @@ public class MedBaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_med_base);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         listViewCrew = findViewById(R.id.list_medbase_crew);
         btnHealAll = findViewById(R.id.btn_heal_all);
 
@@ -51,5 +55,14 @@ public class MedBaseActivity extends AppCompatActivity {
         
         com.example.scmsimulator.adapters.CrewCardAdapter adapter = new com.example.scmsimulator.adapters.CrewCardAdapter(this, medBaseCrew);
         listViewCrew.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

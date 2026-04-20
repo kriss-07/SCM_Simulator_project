@@ -25,6 +25,10 @@ public class MissionControlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission_control);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         spinnerSlot1 = findViewById(R.id.spinner_slot1);
         spinnerSlot2 = findViewById(R.id.spinner_slot2);
         spinnerSlot3 = findViewById(R.id.spinner_slot3);
@@ -121,5 +125,14 @@ public class MissionControlActivity extends AppCompatActivity {
         // Pre-select some slots if possible
         if (availableCrew.size() >= 1) spinnerSlot1.setSelection(1);
         if (availableCrew.size() >= 2) spinnerSlot2.setSelection(2);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
